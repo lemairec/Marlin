@@ -1,8 +1,30 @@
 /**
+ * Marlin 3D Printer Firmware
+ * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ *
+ * Based on Sprinter and grbl.
+ * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
  * German
  *
  * LCD Menu Messages
- * See also documentation/LCDLanguageFont.md
+ * See also https://github.com/MarlinFirmware/Marlin/wiki/LCD-Language
  *
  */
 #ifndef LANGUAGE_DE_H
@@ -20,7 +42,12 @@
 #define MSG_AUTOSTART                       "Autostart"
 #define MSG_DISABLE_STEPPERS                "Motoren Aus" // M84
 #define MSG_AUTO_HOME                       "Home" // G28
+#define MSG_LEVEL_BED_HOMING                "Homing XYZ"
+#define MSG_LEVEL_BED_WAITING               "Klick für Start"
+#define MSG_LEVEL_BED_DONE                  "Fertig"
+#define MSG_LEVEL_BED_CANCEL                "Abbruch"
 #define MSG_SET_HOME_OFFSETS                "Setze Home hier"
+#define MSG_HOME_OFFSETS_APPLIED            "Offsets aktiv"
 #define MSG_SET_ORIGIN                      "Setze Null hier" //"G92 X0 Y0 Z0" commented out in ultralcd.cpp
 #define MSG_PREHEAT_PLA                     "Vorwärmen PLA"
 #define MSG_PREHEAT_PLA_N                   "Vorwärmen PLA "
@@ -35,8 +62,10 @@
 #define MSG_COOLDOWN                        "Abkühlen"
 #define MSG_SWITCH_PS_ON                    "Netzteil Ein"
 #define MSG_SWITCH_PS_OFF                   "Netzteil Aus"
+#define MSG_EXTRUDE                         "Extrudieren"
 #define MSG_RETRACT                         "Retract"
 #define MSG_MOVE_AXIS                       "Bewegen"
+#define MSG_LEVEL_BED                       "Bett Korrektur"
 #define MSG_MOVE_X                          "X"
 #define MSG_MOVE_Y                          "Y"
 #define MSG_MOVE_Z                          "Z"
@@ -45,6 +74,7 @@
 #define MSG_MOVE_1MM                        " 1.0 mm"
 #define MSG_MOVE_10MM                       "10.0 mm"
 #define MSG_SPEED                           "Geschw."
+#define MSG_BED_Z                           "Bett Z"
 #define MSG_NOZZLE                          "Düse"
 #define MSG_BED                             "Bett"
 #define MSG_FAN_SPEED                       "Lüftergeschw."
@@ -65,14 +95,15 @@
 #define MSG_VZ_JERK                         "V z  Ruck"
 #define MSG_VE_JERK                         "V e  Ruck"
 #define MSG_VMAX                            "V max " // space by purpose
-#define MSG_X                               "x"
-#define MSG_Y                               "y"
-#define MSG_Z                               "z"
-#define MSG_E                               "e"
+#define MSG_X                               "X"
+#define MSG_Y                               "Y"
+#define MSG_Z                               "Z"
+#define MSG_E                               "E"
 #define MSG_VMIN                            "V min"
 #define MSG_VTRAV_MIN                       "VTrav min"
 #define MSG_AMAX                            "A max " // space by purpose
 #define MSG_A_RETRACT                       "A Retract"
+#define MSG_A_TRAVEL                        "A Rueckzug"
 #define MSG_XSTEPS                          "X steps/mm"
 #define MSG_YSTEPS                          "Y steps/mm"
 #define MSG_ZSTEPS                          "Z steps/mm"
@@ -114,12 +145,19 @@
 #define MSG_INIT_SDCARD                     "SDKarte erkennen"// Manually initialize the SD-card via user interface
 #define MSG_CNG_SDCARD                      "SDKarte erkennen"// SD-card changed by user. For machines with no autocarddetect. Both send "M21"
 #define MSG_ZPROBE_OUT                      "Sensor ausserhalb"
-#define MSG_POSITION_UNKNOWN                "X/Y vor Z homen."
+#define MSG_YX_UNHOMED                      "X/Y vor Z homen."
 #define MSG_ZPROBE_ZOFFSET                  "Z Offset"
 #define MSG_BABYSTEP_X                      "Babystep X"
 #define MSG_BABYSTEP_Y                      "Babystep Y"
 #define MSG_BABYSTEP_Z                      "Babystep Z"
 #define MSG_ENDSTOP_ABORT                   "Endstop Abbr. Ein"
+#define MSG_HEATING_FAILED_LCD              "Heizen fehlgesch."
+#define MSG_ERR_REDUNDANT_TEMP              "Redund. Temperaturabw."
+#define MSG_THERMAL_RUNAWAY                 "Temp. n. erreicht"
+#define MSG_ERR_MAXTEMP                     "Temp. ueberschritten"
+#define MSG_ERR_MINTEMP                     "Temp. unterschritten"
+#define MSG_ERR_MAXTEMP_BED                 "Temp. Bett ueberschr."
+#define MSG_ERR_MINTEMP_BED                 "Temp. Bett unterschr."
 #define MSG_END_HOUR                        "Stunden"
 #define MSG_END_MINUTE                      "Minuten"
 #define MSG_HEATING                         "Aufheizen..."
@@ -127,12 +165,10 @@
 #define MSG_BED_HEATING                     "Bett aufheizen"
 #define MSG_BED_DONE                        "Bett aufgeheizt"
 
-#if ENABLED(DELTA_CALIBRATION_MENU)
-  #define MSG_DELTA_CALIBRATE               "Delta kalibrieren"
-  #define MSG_DELTA_CALIBRATE_X             "Kalibriere X"
-  #define MSG_DELTA_CALIBRATE_Y             "Kalibriere Y"
-  #define MSG_DELTA_CALIBRATE_Z             "Kalibriere Z"
-  #define MSG_DELTA_CALIBRATE_CENTER        "Kalibriere Mitte"
-#endif // DELTA_CALIBRATION_MENU
+#define MSG_DELTA_CALIBRATE                 "Delta kalibrieren"
+#define MSG_DELTA_CALIBRATE_X               "Kalibriere X"
+#define MSG_DELTA_CALIBRATE_Y               "Kalibriere Y"
+#define MSG_DELTA_CALIBRATE_Z               "Kalibriere Z"
+#define MSG_DELTA_CALIBRATE_CENTER          "Kalibriere Mitte"
 
 #endif // LANGUAGE_DE_H

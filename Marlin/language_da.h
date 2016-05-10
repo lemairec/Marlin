@@ -1,8 +1,30 @@
 /**
+ * Marlin 3D Printer Firmware
+ * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ *
+ * Based on Sprinter and grbl.
+ * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+/**
  * Danish
  *
  * LCD Menu Messages
- * See also documentation/LCDLanguageFont.md
+ * See also https://github.com/MarlinFirmware/Marlin/wiki/LCD-Language
  *
  */
 #ifndef LANGUAGE_DA_H
@@ -21,7 +43,12 @@
 #define MSG_AUTO_HOME                       "Home" // G28
 #define MSG_COOLDOWN                        "Afkøl"
 #define MSG_DISABLE_STEPPERS                "Slå stepper fra"
-#define MSG_SET_HOME_OFFSETS                "Sæt home offsets"
+#define MSG_LEVEL_BED_HOMING                "Homing XYZ"
+#define MSG_LEVEL_BED_WAITING               "Tryk for at starte"
+#define MSG_LEVEL_BED_DONE                  "Justering er færdig!"
+#define MSG_LEVEL_BED_CANCEL                "Annuller"
+#define MSG_SET_HOME_OFFSETS                "Sæt forskyding til udgangsposition"
+#define MSG_HOME_OFFSETS_APPLIED            "Forskydninger er tilføjet"
 #define MSG_SET_ORIGIN                      "Sæt origin"
 #define MSG_SWITCH_PS_ON                    "Slå strøm til"
 #define MSG_SWITCH_PS_OFF                   "Slå strøm fra"
@@ -47,8 +74,6 @@
 #define MSG_MOVE_10MM                       "Flyt 10mm"
 #define MSG_SPEED                           "Hastighed"
 #define MSG_NOZZLE                          "Dyse"
-#define MSG_NOZZLE1                         "Dyse2"
-#define MSG_NOZZLE2                         "Dyse3"
 #define MSG_BED                             "Plade"
 #define MSG_FAN_SPEED                       "Blæser hastighed"
 #define MSG_FLOW                            "Flow"
@@ -57,8 +82,8 @@
 #define MSG_MAX                             " \002 Max"
 #define MSG_FACTOR                          " \002 Fact"
 #define MSG_AUTOTEMP                        "Autotemp"
-#define MSG_ON                              "On "
-#define MSG_OFF                             "Off"
+#define MSG_ON                              "Til "
+#define MSG_OFF                             "Fra"
 #define MSG_PID_P                           "PID-P"
 #define MSG_PID_I                           "PID-I"
 #define MSG_PID_D                           "PID-D"
@@ -68,14 +93,15 @@
 #define MSG_VZ_JERK                         "Vz-jerk"
 #define MSG_VE_JERK                         "Ve-jerk"
 #define MSG_VMAX                            "Vmax "
-#define MSG_X                               "x"
-#define MSG_Y                               "y"
-#define MSG_Z                               "z"
-#define MSG_E                               "e"
+#define MSG_X                               "X"
+#define MSG_Y                               "Y"
+#define MSG_Z                               "Z"
+#define MSG_E                               "E"
 #define MSG_VMIN                            "Vmin"
 #define MSG_VTRAV_MIN                       "VTrav min"
 #define MSG_AMAX                            "Amax "
 #define MSG_A_RETRACT                       "A-retract"
+#define MSG_A_TRAVEL                        "A-rejse"
 #define MSG_XSTEPS                          "Xsteps/mm"
 #define MSG_YSTEPS                          "Ysteps/mm"
 #define MSG_ZSTEPS                          "Zsteps/mm"
@@ -101,10 +127,10 @@
 #define MSG_DWELL                           "Dvale..."
 #define MSG_USERWAIT                        "Venter på bruger..."
 #define MSG_RESUMING                        "Forsætter printet"
-#define MSG_PRINT_ABORTED                   "Print annuleret"
-#define MSG_NO_MOVE                         "No move."
-#define MSG_KILLED                          "KILLED. "
-#define MSG_STOPPED                         "STOPPED. "
+#define MSG_PRINT_ABORTED                   "Print annulleret"
+#define MSG_NO_MOVE                         "Ingen bevægelse."
+#define MSG_KILLED                          "DRÆBT. "
+#define MSG_STOPPED                         "STOPPET. "
 #define MSG_CONTROL_RETRACT                 "Tilbagetraek mm"
 #define MSG_CONTROL_RETRACT_SWAP            "Skift Re.mm"
 #define MSG_CONTROL_RETRACTF                "Tilbagetræk V"
@@ -113,22 +139,31 @@
 #define MSG_CONTROL_RETRACT_RECOVER_SWAP    "S UnRet+mm"
 #define MSG_CONTROL_RETRACT_RECOVERF        "UnRet  V"
 #define MSG_AUTORETRACT                     "AutoRetr."
-#define MSG_ZPROBE_OUT                      "Probe udenfor plade"
 #define MSG_FILAMENTCHANGE                  "Skift filament"
 #define MSG_INIT_SDCARD                     "Init. SD card"
 #define MSG_CNG_SDCARD                      "Skift SD kort"
-#define MSG_POSITION_UNKNOWN                "Home X/Y før Z"
+#define MSG_ZPROBE_OUT                      "Probe udenfor plade"
+#define MSG_YX_UNHOMED                      "Home X/Y før Z"
 #define MSG_ZPROBE_ZOFFSET                  "Z Offset"
 #define MSG_BABYSTEP_X                      "Babystep X"
 #define MSG_BABYSTEP_Y                      "Babystep Y"
 #define MSG_BABYSTEP_Z                      "Babystep Z"
+#define MSG_ENDSTOP_ABORT                   "Endstop abort"
 #define MSG_END_HOUR                        "Timer"
 #define MSG_END_MINUTE                      "Minutter"
 #define MSG_HEATING                         "Opvarmer..."
 #define MSG_HEATING_COMPLETE                "Opvarmet"
 #define MSG_BED_HEATING                     "Opvarmer plade"
 #define MSG_BED_DONE                        "Plade opvarmet"
-#define MSG_ENDSTOP_ABORT                   "Endstop abort"
+
+#define MSG_BED_Z                           "Plade Z"
+#define MSG_HEATING_FAILED_LCD              "Opvarmning mislykkedes"
+#define MSG_ERR_REDUNDANT_TEMP              "Fejl: reserve temp"
+#define MSG_THERMAL_RUNAWAY                 "Temp løber løbsk"
+#define MSG_ERR_MAXTEMP                     "Fejl: Maks temp"
+#define MSG_ERR_MINTEMP                     "Fejl: Min temp"
+#define MSG_ERR_MAXTEMP_BED                 "Fejl: Maks P temp"
+#define MSG_ERR_MINTEMP_BED                 "Fejl: Min P temp"
 
 #ifdef DELTA_CALIBRATION_MENU
   #define MSG_DELTA_CALIBRATE               "Delta Kalibrering"
